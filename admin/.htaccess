@@ -1,0 +1,7 @@
+# Disable directory listing
+Options -Indexes
+
+# Protect admin files
+<FilesMatch "\.(php)$">
+    Require all granted
+</FilesMatch>
