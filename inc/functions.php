@@ -1,7 +1,10 @@
 <?php
-ini_set('session.use_strict_mode', 1);
-ini_set('session.cookie_httponly', 1);
-session_start();
+// Only set session ini and start session when no session is active.
+if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.use_strict_mode', 1);
+    ini_set('session.cookie_httponly', 1);
+    session_start();
+}
 
 function rupiah($angka){
     return 'Rp'.number_format($angka,0,',','.');

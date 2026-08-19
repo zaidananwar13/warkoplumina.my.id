@@ -2,6 +2,7 @@
 session_start();
 header('Content-Type: text/html; charset=UTF-8');
 require_once __DIR__ . '/inc/functions.php';
+require_once __DIR__ . '/inc/db.php';
 
 // ===============================
 // AMBIL DATA FORM
@@ -74,6 +75,41 @@ $pesan =
 // ===============================
 // CLEAR CART (PENTING)
 // ===============================
+// ===============================
+// INSERT ORDER INTO DATABASE
+// ===============================
+try {
+    $order_code = generate_order_code();
+    $stmt = $pdo->prepare("INSERT INTO orders (order_code,customer_name,room_number,total_price,status,created_at) VALUES (?,?,?,?,?,NOW())");
+    $stmt->execute([$order_code, $nama, $kamar, $total, 'pending']);
+    $order_id = $pdo->lastInsertId();
+
+    foreach ($cart as $item) {
+        $subtotal = $item['price'] * $item['qty'];
+        $pdo->prepare("INSERT INTO order_items (order_id,product_name,quantity,price,subtotal) VALUES (?,?,?,?,?)")
+            ->execute([
+                $order_id,
+                $item['name'],
+                $item['qty'],
+                $item['price'],
+                $subtotal
+            ]);
+
+        // reduce stock if product exists
+        $pdo->prepare("UPDATE products SET stock=stock-? WHERE id=?")->execute([
+            $item['qty'],
+            $item['id']
+        ]);
+    }
+
+} catch (Exception $e) {
+    // If DB fails, keep cart and show error
+    http_response_code(500);
+    echo "Gagal menyimpan pesanan: " . htmlspecialchars($e->getMessage());
+    exit;
+}
+
+// CLEAR CART (PENTING)
 unset($_SESSION['cart']);
 
 // OPTIONAL: bersihkan data checkout lain

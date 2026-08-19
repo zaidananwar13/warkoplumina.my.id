@@ -52,8 +52,10 @@ include __DIR__ . '/inc/header.php';
 <h2>Dashboard</h2>
 
 <div class="dashboard-grid">
+</div>
 
-```
+<div class="dashboard-grid">
+
 <div class="dash-card">
     <h3><?= $totalProducts ?></h3>
     <p>Total Produk</p>
@@ -73,8 +75,8 @@ include __DIR__ . '/inc/header.php';
     <h3><?= rupiah($todayOmzet) ?></h3>
     <p>Omzet Hari Ini</p>
 </div>
-```
 
+</div>
 </div>
 
 <hr>
@@ -87,7 +89,7 @@ include __DIR__ . '/inc/header.php';
 
 <script>
 
-const ctx = document.getElementById('salesChart');
+const ctx = document.getElementById('salesChart').getContext('2d');
 
 new Chart(ctx, {
 
