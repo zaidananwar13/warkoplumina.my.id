@@ -57,7 +57,7 @@ $router->get('/notifications/poll', [NotificationController::class, 'poll']);
 $router->group('/admin', function ($router) {
 
     // Redirect /admin to /admin/dashboard
-    $router->get('', [DashboardController::class, 'redirect']);
+    $router->get('', [DashboardController::class, 'redirectToDashboard']);
 
     // Authentication
     $router->get('/login', [AuthController::class, 'showLogin']);

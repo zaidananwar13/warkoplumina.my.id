@@ -22,7 +22,7 @@ class DashboardController extends AdminController
     /**
      * Redirect /admin to /admin/dashboard.
      */
-    public function redirect(Request $request): void
+    public function redirectToDashboard(Request $request): void
     {
         \App\Core\Response::redirect('/admin/dashboard');
     }
