@@ -2,7 +2,7 @@
 .DS_Store
 
 # Dependencies
-/vendor/
+# /vendor/
 
 # Environment
 .env
