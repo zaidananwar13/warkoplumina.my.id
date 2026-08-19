@@ -19,3 +19,4 @@
 
 # Error logs
 error_log
+*.DS_Store
