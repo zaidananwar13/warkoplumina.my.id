@@ -54,13 +54,10 @@ $router->get('/notifications/poll', [NotificationController::class, 'poll']);
 // ADMIN ROUTES
 // =============================================
 
-// Redirect /admin to /admin/dashboard
-$router->get('/admin', function () {
-    \App\Core\Response::redirect('/admin/dashboard');
-    exit;
-});
-
 $router->group('/admin', function ($router) {
+
+    // Redirect /admin to /admin/dashboard
+    $router->get('', [DashboardController::class, 'redirect']);
 
     // Authentication
     $router->get('/login', [AuthController::class, 'showLogin']);

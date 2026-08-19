@@ -20,6 +20,14 @@ class DashboardController extends AdminController
     }
 
     /**
+     * Redirect /admin to /admin/dashboard.
+     */
+    public function redirect(Request $request): void
+    {
+        \App\Core\Response::redirect('/admin/dashboard');
+    }
+
+    /**
      * Display the dashboard with stats and chart data.
      */
     public function index(Request $request): void
