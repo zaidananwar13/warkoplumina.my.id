@@ -6,6 +6,7 @@ use App\Core\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Services\OrderService;
+use App\Services\NotificationService;
 
 /**
  * Admin Order Controller
@@ -17,12 +18,14 @@ class OrderController extends AdminController
     private Order $orderModel;
     private OrderItem $orderItemModel;
     private OrderService $orderService;
+    private NotificationService $notificationService;
 
     public function __construct()
     {
         $this->orderModel = new Order();
         $this->orderItemModel = new OrderItem();
         $this->orderService = new OrderService();
+        $this->notificationService = new NotificationService();
     }
 
     /**
@@ -54,7 +57,7 @@ class OrderController extends AdminController
     }
 
     /**
-     * Update order status.
+     * Update order status and send notification.
      */
     public function updateStatus(Request $request): void
     {
@@ -65,6 +68,16 @@ class OrderController extends AdminController
 
         if ($orderId && $status) {
             $this->orderService->updateStatus($orderId, $status);
+
+            // Send notification to user
+            $order = $this->orderModel->find($orderId);
+            if ($order) {
+                $this->notificationService->notify(
+                    $orderId,
+                    $order['order_code'],
+                    $status
+                );
+            }
         }
 
         $this->redirect('/admin/orders');

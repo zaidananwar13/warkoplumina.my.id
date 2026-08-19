@@ -45,7 +45,7 @@
 
             <div class="form-group">
                 <label for="kamar">Nomor Kamar</label>
-                <input type="text" id="kamar" name="kamar" placeholder="Contoh: Kamar 12" required>
+                <input type="text" id="kamar" name="kamar" placeholder="Contoh: 101" required>
             </div>
 
             <div class="form-group">
@@ -58,7 +58,7 @@
 
             <div id="cashFields">
                 <div class="form-group">
-                    <label for="paidAmount">Uang Dibayar</label>
+                    <label for="paidAmount">Uang Pembayaran</label>
                     <input type="number" name="uang" id="paidAmount" placeholder="Contoh: 20000">
                 </div>
 
@@ -77,6 +77,7 @@
 </div>
 
 <script src="<?= asset('js/checkout.js') ?>"></script>
+<script src="<?= asset('js/notifications.js') ?>"></script>
 <script src="<?= asset('js/theme.js') ?>"></script>
 </body>
 </html>

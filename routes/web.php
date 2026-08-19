@@ -13,6 +13,8 @@ use App\Controllers\HomeController;
 use App\Controllers\CategoryController;
 use App\Controllers\CartController;
 use App\Controllers\CheckoutController;
+use App\Controllers\HistoryController;
+use App\Controllers\NotificationController;
 use App\Controllers\Admin\AuthController;
 use App\Controllers\Admin\DashboardController;
 use App\Controllers\Admin\ProductController;
@@ -41,6 +43,12 @@ $router->post('/cart/update', [CartController::class, 'updateAjax']);
 // Checkout
 $router->get('/checkout', [CheckoutController::class, 'index']);
 $router->post('/checkout/process', [CheckoutController::class, 'process']);
+
+// Order History
+$router->get('/history', [HistoryController::class, 'index']);
+
+// Notifications (polling)
+$router->get('/notifications/poll', [NotificationController::class, 'poll']);
 
 // =============================================
 // ADMIN ROUTES

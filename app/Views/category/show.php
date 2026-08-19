@@ -68,6 +68,7 @@
 </a>
 
 <script src="<?= asset('js/cart.js') ?>"></script>
+<script src="<?= asset('js/notifications.js') ?>"></script>
 <script src="<?= asset('js/theme.js') ?>"></script>
 </body>
 </html>

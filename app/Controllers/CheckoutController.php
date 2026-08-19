@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\Request;
 use App\Core\Response;
+use App\Core\Session;
 use App\Services\CartService;
 use App\Services\OrderService;
 use App\Services\WhatsAppService;
@@ -78,6 +79,11 @@ class CheckoutController extends Controller
             'payment_method' => $payment,
             'amount_paid' => $amountPaid,
         ]);
+
+        // Store order ID in session for history
+        $myOrders = Session::get('my_orders', []);
+        $myOrders[] = $result['order_id'];
+        Session::set('my_orders', $myOrders);
 
         // Clear the cart
         $this->cartService->clear();

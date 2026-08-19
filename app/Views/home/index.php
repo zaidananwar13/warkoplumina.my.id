@@ -26,6 +26,10 @@
         </div>
         <div class="header-right">
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">&#x1F319;</button>
+            <a href="<?= base_url('history') ?>" class="header-history" title="Riwayat" id="historyBtn">
+                &#x1F4CB;
+                <span class="badge history-badge" id="history-badge" style="display:none;">0</span>
+            </a>
             <a href="<?= base_url('cart') ?>" class="header-cart">
                 &#x1F6D2;
                 <span class="badge" id="cart-count" style="display:none;">0</span>
@@ -65,6 +69,7 @@
 </a>
 
 <script src="<?= asset('js/cart.js') ?>"></script>
+<script src="<?= asset('js/notifications.js') ?>"></script>
 <script src="<?= asset('js/theme.js') ?>"></script>
 </body>
 </html>

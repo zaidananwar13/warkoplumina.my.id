@@ -73,5 +73,6 @@
 </div>
 
 <script src="<?= asset('js/theme.js') ?>"></script>
+<script src="<?= asset('js/notifications.js') ?>"></script>
 </body>
 </html>
