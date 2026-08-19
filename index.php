@@ -1,14 +1,4 @@
 <?php
-
-/**
- * Development Server Router
- *
- * Usage: php -S localhost:8080 server.php
- *
- * This script handles PHP's built-in server routing.
- * It serves static files directly and routes everything else to public/index.php.
- */
-
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 // Serve static files if they exist in public/
