@@ -1,2 +1,21 @@
 # Ignore Mac system files
 .DS_Store
+
+# Dependencies
+/vendor/
+
+# Environment
+.env
+
+# IDE
+.idea/
+.vscode/
+
+# Coverage reports
+/coverage/
+
+# PHPUnit
+.phpunit.result.cache
+
+# Error logs
+error_log
