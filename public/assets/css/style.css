@@ -872,3 +872,36 @@ img { display: block; max-width: 100%; }
 [data-theme="light"] .notif-toast {
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
+
+
+/* ===============================
+   THEME SWITCH ANIMATION
+================================ */
+html.theme-ready,
+html.theme-ready *,
+html.theme-ready *::before,
+html.theme-ready *::after {
+    transition:
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.25s ease,
+        box-shadow 0.35s ease;
+}
+
+/* Don't transition images and performance-heavy stuff */
+html.theme-ready img,
+html.theme-ready canvas,
+html.theme-ready video {
+    transition: none;
+}
+
+/* Button spin animation */
+@keyframes themeSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.theme-toggle.theme-spin {
+    animation: themeSpin 0.4s ease;
+}
