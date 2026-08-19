@@ -42,6 +42,7 @@ class Category extends Model
         $fields = [
             'name' => $data['name'],
             'slug' => $data['slug'],
+            'icon' => $data['icon'] ?? '',
             'status' => $data['status'] ?? 1,
         ];
 

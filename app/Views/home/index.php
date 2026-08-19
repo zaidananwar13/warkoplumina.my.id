@@ -49,15 +49,15 @@
 
     <div class="category-grid">
         <?php
-        $icons = ['&#x2615;', '&#x1F354;', '&#x1F379;', '&#x1F370;', '&#x1F35C;', '&#x1F95E;', '&#x1F969;', '&#x1F366;'];
-        $i = 0;
+        $defaultIcon = '&#x1F37D;'; // plate with cutlery fallback
         foreach ($categories as $cat):
+            $icon = !empty($cat['icon']) ? e($cat['icon']) : $defaultIcon;
         ?>
         <a href="<?= base_url('category/' . e($cat['slug'])) ?>" class="cat-item">
-            <div class="cat-icon"><?= $icons[$i % count($icons)] ?></div>
+            <div class="cat-icon"><?= $icon ?></div>
             <span class="cat-name"><?= e($cat['name']) ?></span>
         </a>
-        <?php $i++; endforeach; ?>
+        <?php endforeach; ?>
     </div>
 
 </div>

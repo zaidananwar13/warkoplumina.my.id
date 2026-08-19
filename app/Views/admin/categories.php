@@ -46,6 +46,9 @@
     <label>Slug (URL)</label>
     <input type="text" name="slug" value="<?= e($edit['slug'] ?? '') ?>" required>
 
+    <label>Icon (emoji)</label>
+    <input type="text" name="icon" value="<?= e($edit['icon'] ?? '') ?>" placeholder="☕ 🍜 🥩 🍹" style="font-size:20px;">
+
     <label>
         <input type="checkbox" name="status" value="1"
             <?= ($edit === null || ($edit['status'] ?? 1)) ? 'checked' : '' ?>>

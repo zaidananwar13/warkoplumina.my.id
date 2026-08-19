@@ -53,6 +53,7 @@ class CategoryController extends AdminController
         $data = [
             'name' => trim($request->input('name', '')),
             'slug' => trim($request->input('slug', '')),
+            'icon' => trim($request->input('icon', '')),
             'status' => $request->input('status') ? 1 : 0,
         ];
 
